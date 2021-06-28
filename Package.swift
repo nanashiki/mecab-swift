@@ -3,7 +3,7 @@ import PackageDescription
 
 
 #if os(macOS)
-	let CMeCabURL = "https://github.com/novi/CMeCab-OSX.git"
+	let CMeCabURL = "https://github.com/nanashiki/CMeCab-OSX.git"
 #else
 	let CMeCabURL = "https://github.com/novi/CMeCab.git"
 #endif
@@ -14,7 +14,7 @@ let package = Package(
         .library(name: "MeCab", targets: ["MeCab"])
     ],
     dependencies: [
-        .package(url: CMeCabURL, from: "1.0.0"),
+        .package(url: CMeCabURL, .branch("master")),
     ],
     targets: [
         .target(name: "MeCab"),
