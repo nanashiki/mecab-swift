@@ -2,22 +2,20 @@
 import PackageDescription
 
 
-#if os(macOS)
-	let CMeCabURL = "https://github.com/nanashiki/CMeCab-OSX.git"
-#else
-	let CMeCabURL = "https://github.com/novi/CMeCab.git"
-#endif
-
 let package = Package(
     name: "MeCab",
     products: [
         .library(name: "MeCab", targets: ["MeCab"])
     ],
-    dependencies: [
-        .package(url: CMeCabURL, .branch("master")),
-    ],
+    dependencies: [],
     targets: [
-        .target(name: "MeCab"),
+        .systemLibrary(
+            name: "CMeCab",
+            path: nil,
+            pkgConfig: nil,
+            providers: []
+        ),
+        .target(name: "MeCab", dependencies: ["CMeCab"]),
         .testTarget(name: "MeCabTests", dependencies: ["MeCab"])
     ]
 )
